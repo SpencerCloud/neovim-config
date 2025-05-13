@@ -239,6 +239,33 @@ return {
 				cssls = {},
 				marksman = {},
 				jsonls = {},
+				twiggy_language_server = {},
+				emmet_language_server = {
+					filetypes = {
+						"css",
+						"eruby",
+						"html",
+						"javascript",
+						"javascriptreact",
+						"less",
+						"sass",
+						"scss",
+						"pug",
+						"typescriptreact",
+						"twig",
+					},
+					init_options = {
+						includeLanguages = {},
+						excludeLanguages = {},
+						extensionsPath = {},
+						preferences = {},
+						showAbbreviationSuggestions = true,
+						showExpandedAbbreviation = "always",
+						showSuggestionsAsSnippets = false,
+						syntaxProfiles = {},
+						variables = {},
+					},
+				},
 
 				lua_ls = {
 					-- cmd = { ... },

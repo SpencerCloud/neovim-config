@@ -27,7 +27,7 @@ return {
 	keys = {
 		-- Basic debugging keymaps, feel free to change to your liking!
 		{
-			"<F5>",
+			"<leader>d",
 			function()
 				require("dap").continue()
 			end,
@@ -135,6 +135,27 @@ return {
 		dap.listeners.after.event_initialized["dapui_config"] = dapui.open
 		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
 		dap.listeners.before.event_exited["dapui_config"] = dapui.close
+
+		dap.adapters.php = {
+			type = "executable",
+			command = "node",
+			args = { vim.fn.expand("~/.config/nvim/vscode-php-debug/out/phpDebug.js") },
+			options = {
+				enb = { VSCODE_DEBUG_LOG = "/tmp/vscode-debug-log.log" },
+			},
+		}
+
+		dap.configurations.php = {
+			{
+				type = "php",
+				request = "launch",
+				name = "Listen for Xdebug",
+				port = 9003,
+				pathMappings = {
+					["/app/public"] = "/mnt/c/Users/SC127920/Local Sites/charity-day-uk-bgc/app/public",
+				},
+			},
+		}
 
 		-- Install golang specific config
 		require("dap-go").setup({

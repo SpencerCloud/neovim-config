@@ -1,2 +1,2 @@
-require('package-manager')
-require('settings')
+require("settings")
+require("package-manager")

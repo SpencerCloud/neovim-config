@@ -51,12 +51,23 @@ vim.opt.colorcolumn = "80"
 vim.keymap.set("n", "j", "jzz", { noremap = true })
 vim.keymap.set("n", "k", "kzz", { noremap = true })
 
--- Reserve a space in the gutter
--- This will avoid an annoying layout shift in the screen
-vim.opt.signcolumn = "yes"
-
 -- Set indentation to 2 spaces
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+
+-- Set indentation to 4 spaces in PHP files
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "php",
+	callback = function()
+		vim.opt_local.tabstop = 4
+		vim.opt_local.softtabstop = 4
+		vim.opt_local.shiftwidth = 4
+	end,
+})
+
+-- Automatically save upon switching buffers
+
+vim.opt.autowrite = true

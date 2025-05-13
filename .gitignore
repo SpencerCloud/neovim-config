@@ -1,0 +1,11 @@
+*~
+.DS_Store
+.idea
+.svn
+.cvs
+*.bak
+*.swp
+Thumbs.db
+*.log
+
+vscode-php-debug
