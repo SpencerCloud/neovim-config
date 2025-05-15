@@ -60,7 +60,7 @@ vim.opt.expandtab = true
 -- Set indentation to 4 spaces in PHP files
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "php",
+	pattern = { "php", "twig" },
 	callback = function()
 		vim.opt_local.tabstop = 4
 		vim.opt_local.softtabstop = 4
