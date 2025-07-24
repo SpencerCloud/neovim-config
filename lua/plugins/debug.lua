@@ -70,7 +70,7 @@ return {
 		},
 		-- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
 		{
-			"<F7>",
+			"<leader>dd",
 			function()
 				require("dapui").toggle()
 			end,
@@ -95,6 +95,7 @@ return {
 			ensure_installed = {
 				-- Update this to ensure that you have the debuggers for the langs you want
 				"delve",
+				"php-debug-adapter",
 			},
 		})
 
@@ -145,15 +146,16 @@ return {
 			},
 		}
 
+		local ok, local_config = pcall(require, "local_config")
+		local pathMappings = ok and local_config.xdebug_paths or {}
+
 		dap.configurations.php = {
 			{
 				type = "php",
 				request = "launch",
 				name = "Listen for Xdebug",
 				port = 9003,
-				pathMappings = {
-					["/app/public"] = "/mnt/c/Users/SC127920/Local Sites/charity-day-uk-bgc/app/public",
-				},
+				pathMappings = pathMappings,
 			},
 		}
 

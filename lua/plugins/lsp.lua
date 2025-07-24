@@ -232,7 +232,27 @@ return {
 				-- ts_ls = {},
 				--
 
-				phpactor = {},
+				intelephense = {
+					settings = {
+						intelephense = {
+							diagnostics = {
+								enable = true,
+								undefinedTypes = false,
+								undefinedFunctions = false,
+								undefinedConstants = false,
+								undefinedClassConstants = false,
+								undefinedMethods = false,
+								undefinedProperties = false,
+								undefinedVariables = true,
+								unusedSymbols = true,
+								unexpectedTokens = true,
+							},
+							files = {
+								maxSize = 5000000,
+							},
+						},
+					},
+				},
 				ts_ls = {},
 				eslint = {},
 				html = {},
@@ -245,7 +265,6 @@ return {
 						"css",
 						"eruby",
 						"html",
-						"javascript",
 						"javascriptreact",
 						"less",
 						"sass",
@@ -255,7 +274,7 @@ return {
 						"twig",
 					},
 					init_options = {
-						includeLanguages = {},
+						includeLanguages = { twig = "html" },
 						excludeLanguages = {},
 						extensionsPath = {},
 						preferences = {},
@@ -299,6 +318,8 @@ return {
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"phpcs",
+				"php-cs-fixer",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -314,6 +335,14 @@ return {
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						require("lspconfig")[server_name].setup(server)
 					end,
+				},
+			})
+
+			-- Explicitly adding emmet settings to ensure they're not overwritten
+			require("lspconfig").emmet_language_server.setup({
+				filetypes = { "html", "css", "scss", "javascriptreact", "twig" },
+				init_options = {
+					includeLanguages = { twig = "html" },
 				},
 			})
 		end,
@@ -351,6 +380,7 @@ return {
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
+				php = { "php_cs_fixer" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--

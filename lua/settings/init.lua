@@ -42,6 +42,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.keymap.set("n", "<leader>w", vim.cmd.update)
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 vim.opt.termguicolors = true
@@ -67,7 +68,3 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.shiftwidth = 4
 	end,
 })
-
--- Automatically save upon switching buffers
-
-vim.opt.autowrite = true
