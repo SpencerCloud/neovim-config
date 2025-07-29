@@ -8,5 +8,5 @@
 Thumbs.db
 *.log
 
-.conf
+conf.lua
 vscode-php-debug
