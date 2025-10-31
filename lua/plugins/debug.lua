@@ -140,8 +140,7 @@ return {
 			},
 		}
 
-		local ok, local_config = pcall(require, "local_config")
-		local pathMappings = ok and local_config.xdebug_paths or {}
+		local config = dofile(vim.fn.stdpath("config") .. "/conf.lua")
 
 		dap.configurations.php = {
 			{
@@ -149,7 +148,7 @@ return {
 				request = "launch",
 				name = "Listen for Xdebug",
 				port = 9003,
-				pathMappings = pathMappings,
+				pathMappings = config.xdebug_paths or {},
 			},
 		}
 	end,
