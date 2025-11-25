@@ -113,6 +113,23 @@ return {
 					end,
 				})
 			end, { desc = "[S]earch Word[P]ress [T]hemes" })
+
+			vim.keymap.set("n", "<leader>spp", function()
+				builtin.live_grep({
+					prompt_title = "Search in WordPress plugins",
+					search_dirs = { "wp-content/plugins" },
+					additional_args = function()
+						return {
+							"--glob",
+							"!wp-content/plugins/*/dist/**",
+							"--glob",
+							"!wp-content/plugins/*/node_modules/**",
+							"--glob",
+							"!wp-content/plugins/*/vendor/**",
+						}
+					end,
+				})
+			end, { desc = "[S]earch Word[P]ress [P]lugins" })
 		end,
 	},
 }
