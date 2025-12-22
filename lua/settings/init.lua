@@ -1,29 +1,37 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.opt.number = true
-vim.opt.relativenumber = true
+local options = {
+  number = true,
+  relativenumber = true,
+  mouse = "a",
+  showmode = false,
+  breakindent = true,
+  undofile = true,
+  ignorecase = true,
+  smartcase = true,
+  signcolumn = "yes",
+  updatetime = 250,
+  timeoutlen = 300,
+  splitright = true,
+  splitbelow = true,
+  list = true,
+  listchars = { tab = "» ", trail = "·", nbsp = "␣" },
+  inccommand = "split",
+  cursorline = true,
+  scrolloff = 10,
+  confirm = true,
+  termguicolors = true,
+  colorcolumn = "80",
+}
 
-vim.opt.mouse = "a"
-vim.opt.showmode = false
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
+
 vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus"
 end)
-vim.opt.breakindent = true
-vim.opt.undofile = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.signcolumn = "yes"
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-vim.opt.inccommand = "split"
-vim.opt.cursorline = true
-vim.opt.scrolloff = 10
-vim.opt.confirm = true
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
@@ -44,9 +52,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.keymap.set("n", "<leader>w", vim.cmd.update)
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
-
-vim.opt.termguicolors = true
-vim.opt.colorcolumn = "80"
 
 -- Center screen when moving up and down
 vim.keymap.set("n", "j", "jzz", { noremap = true })
@@ -209,3 +214,21 @@ vim.lsp.config["ts_ls"] = {
 }
 
 vim.lsp.enable("ts_ls")
+
+vim.lsp.config('html', {
+  capabilities = capabilities,
+  cmd =  { "vscode-html-language-server", "--stdio" },
+  filetypes = { "html", "templ" },
+  init_options = {
+    configurationSection = { "html", "css", "javascript" },
+    embeddedLanguages = {
+      css = true,
+      javascript = true
+    },
+    provideFormatter = true
+  },
+  root_markers = { "package.json", ".git" },
+  settings = {},
+})
+
+vim.lsp.enable('html')
