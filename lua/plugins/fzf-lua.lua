@@ -13,7 +13,7 @@ return {
     local fzfLua = require("fzf-lua")
 
     vim.keymap.set("n", "<C-\\>", fzfLua.buffers)
-    vim.keymap.set("n", "<C-p>", fzfLua.files)
+    vim.keymap.set("n", "<C-f>", fzfLua.files)
     vim.keymap.set("n", "<C-g>", fzfLua.live_grep_native)
     vim.keymap.set("n", "<C-k>", fzfLua.builtin)
     vim.keymap.set("n", "<C-r>", fzfLua.resume)
