@@ -52,19 +52,19 @@ vim.opt.colorcolumn = "80"
 vim.keymap.set("n", "j", "jzz", { noremap = true })
 vim.keymap.set("n", "k", "kzz", { noremap = true })
 
--- Set indentation to 2 spaces
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+-- Set indentation
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
--- Set indentation to 4 spaces in PHP files
+-- Set indentation exceptions
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "php", "twig" },
+	pattern = { "javascript", "typescript" },
 	callback = function()
-		vim.opt_local.tabstop = 4
-		vim.opt_local.softtabstop = 4
-		vim.opt_local.shiftwidth = 4
+		vim.opt_local.tabstop = 2
+		vim.opt_local.softtabstop = 2
+		vim.opt_local.shiftwidth = 2
 	end,
 })
 
