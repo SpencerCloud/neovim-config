@@ -16,6 +16,6 @@ return {
     vim.keymap.set("n", "<C-f>", fzfLua.files)
     vim.keymap.set("n", "<C-g>", fzfLua.live_grep)
     vim.keymap.set("n", "<C-b>", fzfLua.builtin)
-    vim.keymap.set("n", "<leader>", fzfLua.resume)
+    vim.keymap.set("n", "<C-r>", fzfLua.resume)
   end,
 }
