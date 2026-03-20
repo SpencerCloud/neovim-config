@@ -1,6 +1,6 @@
 return {
   -- Not sure how much this is LSP config anymore than just autocomplete and
-  -- lazydev at the moment... LSP config is currently located in main init.lua
+  -- lazydev at the moment...
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",

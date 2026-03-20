@@ -7,9 +7,9 @@ vim.lsp.config["lua_ls"] = {
 vim.lsp.enable("lua_ls")
 
 vim.lsp.config["intelephense"] = {
-  cmd = { "intelephense", "--stdio" },
-  filetypes = { "php" },
-  root_markers = { ".git", "composer.json" },
+    cmd = { "intelephense", "--stdio" },
+    filetypes = { "php" },
+    root_markers = { ".git", "composer.json" },
 }
 
 vim.lsp.enable("intelephense")
