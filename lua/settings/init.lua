@@ -60,7 +60,14 @@ vim.opt.expandtab = true
 
 -- Set indentation exceptions
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "javascript", "typescript", "json" },
+	pattern = {
+        "javascript",
+        "typescript",
+        "json",
+        "javascriptreact",
+        "typescriptreact",
+    },
+
 	callback = function()
 		vim.opt_local.tabstop = 2
 		vim.opt_local.softtabstop = 2
