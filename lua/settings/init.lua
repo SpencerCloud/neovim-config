@@ -53,6 +53,8 @@ vim.keymap.set("n", "j", "jzz", { noremap = true })
 vim.keymap.set("n", "k", "kzz", { noremap = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
+vim.keymap.set("n", "n", "nzz", { noremap = true })
+vim.keymap.set("n", "N", "Nzz", { noremap = true })
 
 -- Set indentation
 vim.opt.tabstop = 4
