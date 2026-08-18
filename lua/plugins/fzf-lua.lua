@@ -17,5 +17,6 @@ return {
     vim.keymap.set("n", "<C-g>", fzfLua.live_grep)
     vim.keymap.set("n", "<C-b>", fzfLua.builtin)
     vim.keymap.set("n", "<C-s>", fzfLua.resume) -- Don't do <C-r> this is redo
+    vim.keymap.set("n", "<leader>y", fzfLua.diagnostics_workspace)
   end,
 }

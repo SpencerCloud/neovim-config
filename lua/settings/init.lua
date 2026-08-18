@@ -86,4 +86,12 @@ vim.keymap.set(
     { desc = "Rename symbol" }
 );
 
+vim.keymap.set('n', '<leader>g', ':G ', { desc = 'Start Fugitive Command' });
+vim.keymap.set(
+	'n',
+	'<leader><leader>g',
+	':G<CR>',
+	{ desc = 'Open Fugitive Status Window' }
+);
+
 require("settings.lsp")

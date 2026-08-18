@@ -12,8 +12,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
-        { "tpope/vim-sleuth" },
-        { "tpope/vim-fugitive" },
+		{ "tpope/vim-sleuth" },
+		{ "tpope/vim-fugitive" },
 		{ import = "plugins" },
 	},
 })
